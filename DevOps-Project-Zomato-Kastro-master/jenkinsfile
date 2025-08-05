@@ -39,7 +39,7 @@ pipeline {
                 sh 'cp -r /tmp/npm_cache/node_modules . || true'
 
                 // Install
-                sh 'npm ci'
+                sh 'npm install'
 
                 // Save cache
                 sh 'mkdir -p /tmp/npm_cache && cp -r node_modules /tmp/npm_cache/'

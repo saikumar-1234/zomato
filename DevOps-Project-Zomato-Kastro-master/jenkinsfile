@@ -57,7 +57,7 @@ pipeline {
         stage ("Tag & Push to DockerHub") {
             steps {
                 script {
-                    withDockerRegistry(credentialsId: 'docker') {
+                    withDockerRegistry(credentialsId: 'docker-cred') {
                         sh "docker tag zomato kastrov/zomato:latest "
                         sh "docker push kastrov/zomato:latest "
                     }
@@ -100,7 +100,7 @@ pipeline {
                 </body>
                 </html>
             """,
-            to: 'kastrokiran@gmail.com',
+            to: 'kotagirisai123@gmail.com',
             mimeType: 'text/html',
             attachmentsPattern: 'trivy.txt'
         }

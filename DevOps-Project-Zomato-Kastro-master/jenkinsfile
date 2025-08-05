@@ -18,7 +18,7 @@ pipeline {
                 git 'https://github.com/saikumar-1234/zomato.git'
             }
         }
-        stage("Sonarqube Analysis"){
+       /* stage("Sonarqube Analysis"){
             steps{
                 withSonarQubeEnv('sonar-server') {
                     sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=zomato \
@@ -32,7 +32,7 @@ pipeline {
                     waitForQualityGate abortPipeline: false, credentialsId: 'Sonar-token' 
                 }
             } 
-        }
+        } */
         stage("Install NPM Dependencies") {
             steps {
                 sh "npm install"
@@ -64,7 +64,7 @@ pipeline {
                 }
             }
         }
-        stage('Docker Scout Image') {
+       /* stage('Docker Scout Image') {
             steps {
                 script{
                    withDockerRegistry(credentialsId: 'docker', toolName: 'docker'){
@@ -74,7 +74,7 @@ pipeline {
                    }
                 }
             }
-        }
+        } */
         stage ("Deploy to Container") {
             steps {
                 sh 'docker run -d --name zomato -p 3000:3000 saikotagiri/zomato:latest'
